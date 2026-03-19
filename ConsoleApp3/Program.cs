@@ -18,7 +18,16 @@ namespace SimpleLibrarySystem
             return $"ID: {Id} | {Title} - {Author} ({Year}) | {(IsAvailable ? "Доступна" : "Выдана")}";
         }
     }
-
+    static void IssueBook()
+{
+    Console.Write("Введите ID книги для выдачи: ");
+    if (int.TryParse(Console.ReadLine(), out int bookId))
+    {
+        Book book = books.FirstOrDefault(b => b.Id == bookId);
+        if (book == null)
+        {
+            Console.WriteLine("Книга с таким ID не найдена.");
+        }
     // Класс читателя
     class Reader
     {
